@@ -37,7 +37,7 @@ public class SerieGuia implements Serializable{
     public String toString() {
         int width = 7;
         String formatted = String.format("%0" + width + "d", this.consDesde);
-        return this.serie+"  N° "+formatted;
+        return this.serie+"-"+formatted;
     }
     
 }

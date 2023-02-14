@@ -7,8 +7,12 @@ import javax.swing.JTextField;
 import robin.com.guisunat.bean.DireccionCia;
 import robin.com.guisunat.dao.ArfaccDao;
 import robin.com.guisunat.dao.DireccionCiaDao;
+import robin.com.guisunat.dao.ModalidadTrasladoDao;
+import robin.com.guisunat.dao.MotivoTrasladoDao;
 import robin.com.guisunat.dao.TipoDocumentoClienteDao;
 import robin.com.guisunat.entidad.SerieGuia;
+import robin.com.guisunat.modelo.ModalidadTraslado;
+import robin.com.guisunat.modelo.MotivoTraslado;
 import robin.com.guisunat.modelo.TipoDocumentoCliente;
 
 public class InicioCls {
@@ -50,6 +54,48 @@ public class InicioCls {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    public void listarMotivoTraslado(JComboBox<MotivoTraslado> cbxModTraslado) {
+      try {
+          MotivoTrasladoDao dao = new MotivoTrasladoDao();
+          List<MotivoTraslado> motivos = dao.lista();
+          
+          for (MotivoTraslado motivo : motivos) {
+               cbxModTraslado.addItem(motivo);
+          }
+          
+      }catch (Exception e) {
+	e.printStackTrace();
+      }
+    }
+    
+    public void listarModalidadTraslado(JComboBox<ModalidadTraslado> cbxModalidadTraslado) {
+      try {
+          ModalidadTrasladoDao dao = new ModalidadTrasladoDao();
+          List<ModalidadTraslado> motivos = dao.lista();
+          
+          for (ModalidadTraslado motivo : motivos) {
+               cbxModalidadTraslado.addItem(motivo);
+          }
+          
+      }catch (Exception e) {
+	e.printStackTrace();
+      }
+    }
+    
+    public void llenarSerieCorreDocuRefe(JComboBox<SerieGuia> cbxSerieCorreDocRef) {
+      try {
+          ArfaccDao arfaccDao = new ArfaccDao();
+          List<SerieGuia> guias = arfaccDao.listaSerieCorrelativoFactura("01", "41", "F");
+          
+          for (SerieGuia guia : guias) {
+               cbxSerieCorreDocRef.addItem(guia);
+          }
+          
+      }catch (Exception e) {
+	e.printStackTrace();
+      }
     }
        
 }

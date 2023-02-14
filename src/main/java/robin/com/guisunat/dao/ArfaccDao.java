@@ -33,6 +33,24 @@ public class ArfaccDao {
         return guias;
     }
     
+    public List<SerieGuia> listaSerieCorrelativoFactura(String cia, String centro, String tipDocu) {
+      StringBuilder sql = new StringBuilder();
+      sql.append("SELECT SERIE, (CONS_DESDE + 1) CONS_DESDE FROM FACTU.ARFACC ")
+      .append("WHERE no_cia = ? and centro = ? and tipo_doc = ? and activo = 'S' and substr(serie,0,1) = ? ");
+      List<SerieGuia> guias = new ArrayList<>();
+        try {
+            Query query = this.getEntityManager().createNativeQuery(sql.toString(), SerieGuia.class);
+            query.setParameter(1, cia);
+            query.setParameter(2, centro);
+            query.setParameter(3, tipDocu);
+            query.setParameter(4, tipDocu);
+            
+            guias = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return guias;
+    }
     
     
 }
