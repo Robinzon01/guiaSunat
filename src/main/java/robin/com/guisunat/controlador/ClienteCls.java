@@ -10,10 +10,12 @@ import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import robin.com.guisunat.bean.ClienteBean;
+import robin.com.guisunat.bean.DireccionClienteBean;
 import robin.com.guisunat.dao.ClienteDao;
 
 public class ClienteCls {
-     List<ClienteBean> clientes = new ArrayList<>();
+     
+    private ClienteDao clienteDao = new ClienteDao();
     
     public void cargarClientes(String tipDocu, String campo ,JTextField txtUno , JList Thelist,
                JScrollPane SUBIRYBAJAR, DefaultListModel modelolista, JPopupMenu jPopupMenu1) {
@@ -21,18 +23,15 @@ public class ClienteCls {
         SUBIRYBAJAR.setViewportView(Thelist);
         jPopupMenu1.add(SUBIRYBAJAR); 
         
-        try {
-          ClienteDao clienteDao = new ClienteDao();
-        
+        try {          
+          List<ClienteBean> clientes = new ArrayList<>();
           switch (tipDocu) {
             case "1":
                 clientes = clienteDao.listaCliente("01", "DNI", 8, campo, txtUno.getText());
-                break;
-                
+                break;               
             case "6":
                 clientes = clienteDao.listaCliente("01", "RUC", 11, campo, txtUno.getText());
-                break;
-                
+                break;                
             default:
                 JOptionPane.showMessageDialog(null, "No tiene permitido está busqueda. Verifica si el tipo de documento del cliente es el correcto.");
                 break;
@@ -51,7 +50,6 @@ public class ClienteCls {
         if(txtUno.getText().trim().length() == 0 || Thelist.getModel().getSize() == 0){
             jPopupMenu1.setVisible(false);
         }else{
-            System.out.println("ENTRO");
             jPopupMenu1.setVisible(true);                
         }
         
@@ -61,6 +59,12 @@ public class ClienteCls {
              JOptionPane.showMessageDialog(null, e.getMessage());   
         }
     
+    }
+    
+    public void cargarDirecionCliente(String campo ,JTextField txtDirecCliente, JTextField txtUbigeoCliente) {
+        DireccionClienteBean direccionCli = this.clienteDao.getDirecCliente("01", campo);
+        txtDirecCliente.setText(direccionCli.getDireccion());
+        txtUbigeoCliente.setText(direccionCli.getDirec2());
     }
     
 }

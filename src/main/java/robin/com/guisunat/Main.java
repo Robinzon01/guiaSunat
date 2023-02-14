@@ -80,7 +80,7 @@ public class Main extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnSeleccionarCliente = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
@@ -90,11 +90,11 @@ public class Main extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         txtDirecCia = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
+        txtDirecCliente = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         txtUbigeoCia = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
+        txtUbigeoCliente = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
         jLabel25 = new javax.swing.JLabel();
@@ -178,6 +178,8 @@ public class Main extends javax.swing.JFrame {
 
         jLabel3.setText("Nro. Documento   ");
 
+        txtNroDocuCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtNroDocuCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtNroDocuCliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNroDocuClienteKeyPressed(evt);
@@ -233,8 +235,18 @@ public class Main extends javax.swing.JFrame {
         jButton1.setText("Buscar");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton2.setText("Buscar");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSeleccionarCliente.setText("+");
+        btnSeleccionarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSeleccionarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSeleccionarClienteActionPerformed(evt);
+            }
+        });
+        btnSeleccionarCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnSeleccionarClienteKeyPressed(evt);
+            }
+        });
 
         jLabel17.setText("N° Placa Veículo");
 
@@ -251,12 +263,16 @@ public class Main extends javax.swing.JFrame {
         txtDirecCia.setEditable(false);
         txtDirecCia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        txtDirecCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         jLabel22.setText("Ubigeo");
 
         jLabel23.setText("Ubigeo");
 
         txtUbigeoCia.setEditable(false);
         txtUbigeoCia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        txtUbigeoCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel24.setText("DOCUMENTO DE REFERENCIA :  ");
@@ -280,7 +296,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtNroDocuCliente))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
+                        .addComponent(btnSeleccionarCliente)
                         .addGap(18, 18, 18)
                         .addGroup(jpPricipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNombreCliente)
@@ -328,14 +344,14 @@ public class Main extends javax.swing.JFrame {
                                 .addGap(33, 33, 33)
                                 .addGroup(jpPricipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jSeparator5)
-                                    .addComponent(jTextField11)
+                                    .addComponent(txtDirecCliente)
                                     .addGroup(jpPricipalLayout.createSequentialGroup()
                                         .addGroup(jpPricipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jTextField13)))
+                                    .addComponent(txtUbigeoCliente)))
                             .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -394,7 +410,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(cbxTipDocClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNroDocuCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(btnSeleccionarCliente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -454,7 +470,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpPricipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtDirecCia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDirecCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpPricipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
@@ -462,7 +478,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpPricipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtUbigeoCia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtUbigeoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -657,6 +673,24 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtNombreClienteKeyPressed
 
+    private void btnSeleccionarClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSeleccionarClienteKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSeleccionarClienteKeyPressed
+
+    private void btnSeleccionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarClienteActionPerformed
+
+        if(Thelist.getSelectedIndex() > 0) {
+            String valor = Thelist.getSelectedValue().toString();
+            String[] datos = valor.split("-");
+            txtNroDocuCliente.setText(datos[0]);
+            txtNombreCliente.setText(datos[1]);
+            jPopupMenu1.setVisible(false);
+            ClienteCls clienteCls = new ClienteCls();
+            clienteCls.cargarDirecionCliente(datos[0], txtDirecCliente, txtUbigeoCliente);
+            //this.clsCliente.getDireccionCliente(datos[0], txtDirecDesti, txtDirecDesti2);
+        }
+    }//GEN-LAST:event_btnSeleccionarClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -693,11 +727,11 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSeleccionarCliente;
     private javax.swing.JComboBox<SerieGuia> cbxSerieCorreGuia;
     private javax.swing.JComboBox<TipoDocumentoCliente> cbxTipDocClient;
     private javax.swing.JComboBox<TipoDocumentoCliente> cbxTipDocTransportista;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -746,8 +780,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField16;
@@ -762,10 +794,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jpPricipal;
     private javax.swing.JPanel jpSegundo;
     private javax.swing.JTextField txtDirecCia;
+    private javax.swing.JTextField txtDirecCliente;
     private javax.swing.JFormattedTextField txtFechaEmision;
     private javax.swing.JFormattedTextField txtFechaTraslado;
     private javax.swing.JTextField txtNombreCliente;
     private javax.swing.JTextField txtNroDocuCliente;
     private javax.swing.JTextField txtUbigeoCia;
+    private javax.swing.JTextField txtUbigeoCliente;
     // End of variables declaration//GEN-END:variables
 }
