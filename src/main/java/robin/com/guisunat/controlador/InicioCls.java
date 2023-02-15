@@ -5,11 +5,13 @@ import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import robin.com.guisunat.bean.DireccionCia;
+import robin.com.guisunat.bean.UnidadMedidaBean;
 import robin.com.guisunat.dao.ArfaccDao;
 import robin.com.guisunat.dao.DireccionCiaDao;
 import robin.com.guisunat.dao.ModalidadTrasladoDao;
 import robin.com.guisunat.dao.MotivoTrasladoDao;
 import robin.com.guisunat.dao.TipoDocumentoClienteDao;
+import robin.com.guisunat.dao.UnidadMedidaDao;
 import robin.com.guisunat.entidad.SerieGuia;
 import robin.com.guisunat.modelo.ModalidadTraslado;
 import robin.com.guisunat.modelo.MotivoTraslado;
@@ -91,6 +93,20 @@ public class InicioCls {
           
           for (SerieGuia guia : guias) {
                cbxSerieCorreDocRef.addItem(guia);
+          }
+          
+      }catch (Exception e) {
+	e.printStackTrace();
+      }
+    }
+    
+    public void llenarUnidadMedida(JComboBox<UnidadMedidaBean> cbxUMProducto) {
+      try {
+          UnidadMedidaDao dao = new UnidadMedidaDao();
+          List<UnidadMedidaBean> ums = dao.listaUnidadMedida("01");
+          
+          for (UnidadMedidaBean um : ums) {
+               cbxUMProducto.addItem(um);
           }
           
       }catch (Exception e) {

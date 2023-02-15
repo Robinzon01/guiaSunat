@@ -9,6 +9,8 @@
     <class>robin.com.guisunat.bean.DireccionCia</class>
     <class>robin.com.guisunat.bean.ClienteBean</class>
     <class>robin.com.guisunat.bean.DireccionClienteBean</class>
+    <class>robin.com.guisunat.bean.ArticuloBean</class>
+    <class>robin.com.guisunat.bean.UnidadMedidaBean</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:bdCelia"/>
       <property name="javax.persistence.jdbc.user" value="LLE"/>
