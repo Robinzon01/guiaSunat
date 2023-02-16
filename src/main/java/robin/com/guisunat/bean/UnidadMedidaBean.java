@@ -45,7 +45,7 @@ public class UnidadMedidaBean implements Serializable {
 
     @Override
     public String toString() {
-        return unidad+" | "+ nombre;
+        return codSunat+"-"+ nombre;
     }
 
     @Override
@@ -69,6 +69,4 @@ public class UnidadMedidaBean implements Serializable {
         return Objects.equals(this.nombre, other.nombre);
     }
     
-    
-
 }
