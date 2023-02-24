@@ -38,7 +38,7 @@ public class ClienteDao {
     
     public DireccionClienteBean getDirecCliente(String cia, String noCliente) {
         StringBuilder sql = new StringBuilder();
-        sql.append("SELECT W.NO_CLIENTE , W.DIRECCION, Z.DESC_DEPA||' - '||F.DESC_PROV||' - '||X.DESC_DIST DIREC2 ")
+        sql.append("SELECT W.NO_CLIENTE , W.DIRECCION, X.UBIGEO||'-'||Z.DESC_DEPA||'-'||F.DESC_PROV||'-'||X.DESC_DIST DIREC2 ")
         .append("FROM CXC.ARCCTDA W, CXC.ARCCDP Z, CXC.arccpr F, CXC.ARCCDI X ")
         .append("WHERE W.NO_CIA = ? AND W.ACTIVO = 'S' AND W.NO_CLIENTE = ? ")
         .append("AND Z.NO_CIA = W.NO_CIA AND Z.CODI_DEPA = W.CODI_DEPA AND F.NO_CIA = W.NO_CIA AND F.CODI_DEPA = W.CODI_DEPA ")

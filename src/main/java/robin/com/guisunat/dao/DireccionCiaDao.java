@@ -14,7 +14,7 @@ public class DireccionCiaDao {
     
     public DireccionCia getDireccionDao(String cia, String sucursal) {
        StringBuilder sql = new StringBuilder();
-       sql.append("SELECT Z.COD_SUCURSAL, Z.DIRECCION, W.DESC_DIST||' - '||V.DESC_PROV||' - '||X.DESC_DEPA||' - '||'PERÚ' AS UBIGEO ")
+       sql.append("SELECT Z.COD_SUCURSAL, Z.DIRECCION, W.UBIGEO||'-'||W.DESC_DIST||'-'||V.DESC_PROV||'-'||X.DESC_DEPA||'-'||'PERÚ' AS UBIGEO ")
        .append("FROM FACTU.SUCURSAL_PTOVTA Z, ARCCDP X, arccpr V, ARCCDI W ")
        .append("WHERE Z.NO_CIA = ? AND Z.COD_SUCURSAL = ? ")
        .append("AND X.NO_CIA = Z.NO_CIA AND X.CODI_DEPA = Z.CODI_DEPA AND V.NO_CIA = Z.NO_CIA AND V.CODI_DEPA = X.CODI_DEPA ")

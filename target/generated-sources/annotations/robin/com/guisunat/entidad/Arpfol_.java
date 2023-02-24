@@ -1,0 +1,96 @@
+package robin.com.guisunat.entidad;
+
+import java.math.BigDecimal;
+import java.util.Date;
+import javax.annotation.Generated;
+import javax.persistence.metamodel.SingularAttribute;
+import javax.persistence.metamodel.StaticMetamodel;
+import robin.com.guisunat.entidad.ArpfolPK;
+
+@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2023-02-20T10:08:44")
+@StaticMetamodel(Arpfol.class)
+public class Arpfol_ { 
+
+    public static volatile SingularAttribute<Arpfol, String> descripcion;
+    public static volatile SingularAttribute<Arpfol, String> estado;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> cantAutorizar;
+    public static volatile SingularAttribute<Arpfol, Date> lote;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> cantReasignada;
+    public static volatile SingularAttribute<Arpfol, String> grupo;
+    public static volatile SingularAttribute<Arpfol, Short> parte;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> cantAsignada;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> operInafectas;
+    public static volatile SingularAttribute<Arpfol, String> noFactu;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> dsctoPromocion;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> igv;
+    public static volatile SingularAttribute<Arpfol, Short> noLinea;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> cantReserDeProd;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> mDscto2;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> mDscto3;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> precIgv;
+    public static volatile SingularAttribute<Arpfol, String> tipoAfectacion;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> operExoneradas;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> dsctoOtros;
+    public static volatile SingularAttribute<Arpfol, String> codPreOrden;
+    public static volatile SingularAttribute<Arpfol, String> txtCodAlter;
+    public static volatile SingularAttribute<Arpfol, String> codCli;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> pDscto3;
+    public static volatile SingularAttribute<Arpfol, String> noEntrada;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> pDscto1;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> pDscto2;
+    public static volatile SingularAttribute<Arpfol, String> indPideLote;
+    public static volatile SingularAttribute<Arpfol, ArpfolPK> arpfolPK;
+    public static volatile SingularAttribute<Arpfol, String> tipoDoc;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> totLinea;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> mDscto1;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> precioUni;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> precioSigv;
+    public static volatile SingularAttribute<Arpfol, String> artiNuevo;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> cantPproc;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> dFpago;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> canCli;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> dPromo;
+    public static volatile SingularAttribute<Arpfol, String> tipoBs;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> impIgv;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> operGratuitas;
+    public static volatile SingularAttribute<Arpfol, String> clase;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> cantReser;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> precio;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> cantEntreg1;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> operGravadas;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> cantSolicitada;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> cantComp;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> dsctoFpago;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> flete;
+    public static volatile SingularAttribute<Arpfol, Date> fechaReserva;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> dComer;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> totLineabk;
+    public static volatile SingularAttribute<Arpfol, String> noCliente1;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> cantTmp05;
+    public static volatile SingularAttribute<Arpfol, String> medida;
+    public static volatile SingularAttribute<Arpfol, Date> fechaReasignado;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> cantEntreg;
+    public static volatile SingularAttribute<Arpfol, Date> fechaRegistro;
+    public static volatile SingularAttribute<Arpfol, String> categoria;
+    public static volatile SingularAttribute<Arpfol, String> tipoArti;
+    public static volatile SingularAttribute<Arpfol, String> noArti1;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> cantTmp04;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> impIsc;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> retComision;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> cantTmp03;
+    public static volatile SingularAttribute<Arpfol, String> bodega;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> cantTmp02;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> cantTmp01;
+    public static volatile SingularAttribute<Arpfol, Date> fechaDeProdReser;
+    public static volatile SingularAttribute<Arpfol, String> noCliente;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> cantSal05;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> cantSal04;
+    public static volatile SingularAttribute<Arpfol, String> marca1;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> cantSal03;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> totalLin;
+    public static volatile SingularAttribute<Arpfol, String> marca2;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> dsctoCliente;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> cantSal02;
+    public static volatile SingularAttribute<Arpfol, BigDecimal> cantSal01;
+
+}

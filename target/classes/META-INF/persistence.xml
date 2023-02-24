@@ -11,6 +11,11 @@
     <class>robin.com.guisunat.bean.DireccionClienteBean</class>
     <class>robin.com.guisunat.bean.ArticuloBean</class>
     <class>robin.com.guisunat.bean.UnidadMedidaBean</class>
+    <class>robin.com.guisunat.entidad.Arpfol</class>
+    <class>robin.com.guisunat.entidad.Arpfoe</class>
+    <class>robin.com.guisunat.entidad.Arinml1</class>
+    <class>robin.com.guisunat.entidad.Arinme1</class>
+    <class>robin.com.guisunat.entidad.Arfamc</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:bdCelia"/>
       <property name="javax.persistence.jdbc.user" value="LLE"/>

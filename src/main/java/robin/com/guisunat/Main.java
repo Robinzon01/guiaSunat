@@ -2,12 +2,14 @@
 package robin.com.guisunat;
 
 import java.awt.event.KeyEvent;
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -18,8 +20,12 @@ import robin.com.guisunat.bean.UnidadMedidaBean;
 import robin.com.guisunat.controlador.ArticuloCls;
 import robin.com.guisunat.controlador.ClienteCls;
 import robin.com.guisunat.controlador.InicioCls;
+import robin.com.guisunat.controlador.ReporteCls;
+import robin.com.guisunat.dao.ArfamcDao;
 import robin.com.guisunat.dao.UnidadMedidaDao;
+import robin.com.guisunat.entidad.Arfamc;
 import robin.com.guisunat.entidad.SerieGuia;
+import robin.com.guisunat.modelo.DetalleGuia;
 import robin.com.guisunat.modelo.ModalidadTraslado;
 import robin.com.guisunat.modelo.MotivoTraslado;
 import robin.com.guisunat.modelo.TipoDocumentoCliente;
@@ -168,6 +174,7 @@ public class Main extends javax.swing.JFrame {
         txtObservacionGuia = new javax.swing.JTextField();
         jpBotonesGuia = new javax.swing.JPanel();
         btnCrearguia = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -327,6 +334,11 @@ public class Main extends javax.swing.JFrame {
 
         txtDirecCia.setEditable(false);
         txtDirecCia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtDirecCia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDirecCiaActionPerformed(evt);
+            }
+        });
 
         txtDirecCliente.setEditable(false);
         txtDirecCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -511,7 +523,7 @@ public class Main extends javax.swing.JFrame {
                                         .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(txtPesoBruto)
                                     .addGroup(jpPricipalLayout.createSequentialGroup()
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
@@ -870,6 +882,13 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
+        jButton3.setText("jButton3");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpSegundoLayout = new javax.swing.GroupLayout(jpSegundo);
         jpSegundo.setLayout(jpSegundoLayout);
         jpSegundoLayout.setHorizontalGroup(
@@ -922,6 +941,10 @@ public class Main extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtObservacionGuia)
                         .addContainerGap())))
+            .addGroup(jpSegundoLayout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jpSegundoLayout.setVerticalGroup(
             jpSegundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -955,6 +978,8 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(txtObservacionGuia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jpBotonesGuia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1270,6 +1295,93 @@ public class Main extends javax.swing.JFrame {
             txtUbigeoCliente.setEditable(false);
         }
     }//GEN-LAST:event_chBoxEditarPuntoLLegadaActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        try {
+            ReporteCls reporte = new ReporteCls();
+            
+            ArfamcDao arfamcDao = new ArfamcDao();
+            Arfamc arfamc = arfamcDao.getCia("01");
+            
+            Map<String, Object> parametros = new HashMap<>();
+            parametros.put("REPORT_LOCALE", new java.util.Locale("es", "PE"));
+            parametros.put("RUC_CIA", arfamc.getNoClienteOnline());
+            parametros.put("RAZON_SOCIAL_CIA", arfamc.getNombre());
+            parametros.put("DESC1_CIA", arfamc.getDesc1());
+            parametros.put("DESC2_CIA", arfamc.getDesc2());
+            parametros.put("DESC3_CIA", arfamc.getDesc3());
+            
+            String serieGuia     = cbxSerieCorreGuia.getItemAt( cbxSerieCorreGuia.getSelectedIndex() ).getSerie();
+            Long correlativoGuia = cbxSerieCorreGuia.getItemAt( cbxSerieCorreGuia.getSelectedIndex() ).getConsDesde();
+            
+            parametros.put("SERIE_CIA", serieGuia);
+            parametros.put("CORRELATIVO_CIA", String.valueOf(correlativoGuia));
+            parametros.put("FEC_EMSION", txtFechaEmision.getText());
+            parametros.put("FEC_TRASLADO", txtFechaTraslado.getText());
+            //CLIENTE
+            parametros.put("NRO_CLIENTE", txtNroDocuCliente.getText());
+            parametros.put("NOMBRE_CLIENTE", txtNombreCliente.getText().toUpperCase());
+            //DIRECCION DE PARTIDA
+            parametros.put("DIREC_PARTIDA", txtDirecCia.getText().toUpperCase());
+            parametros.put("UBIGEO_PARTIDA", txtUbigeoCia.getText().toUpperCase());
+            //DIRECCION DE LLEGADA
+            parametros.put("DIREC_LLEGADA", txtDirecCliente.getText().toUpperCase());
+            parametros.put("UBIGEO_LLEGADA", txtUbigeoCliente.getText().toUpperCase());
+            //DATOS DE TRASLADO
+            String motivoTraslado = cbxMotTraslado.getItemAt( cbxMotTraslado.getSelectedIndex() ).getNombre();
+            parametros.put("MOTIVO_TRASLADO", motivoTraslado.toUpperCase());
+            String modalidadTraslado = cbxModalidadTraslado.getItemAt( cbxModalidadTraslado.getSelectedIndex() ).getDescripcion();
+            parametros.put("MODALIDAD_TRASLADO", modalidadTraslado.toUpperCase());
+            
+            String pesoBruto = txtPesoBruto.getValue().toString();
+            String numeroBultos = txtNumeroBultos.getValue().toString();
+            String numeroContenedor = txtNumeroContenedor.getValue().toString();
+            String codigoPuerto = txtCodigoProducto.getText();
+            
+            parametros.put("NUMERO_BULTO", numeroBultos);
+            parametros.put("PESO_BRUTO", pesoBruto);
+            parametros.put("CODIGO_PUERTO", codigoPuerto);
+            parametros.put("NUMERO_CONTENEDOR", numeroContenedor);
+            
+            //DATOS DEL TRANSPORTE:
+            String tipoNroTrasporte = cbxTipDocTransportista.getItemAt( cbxTipDocTransportista.getSelectedIndex() ).getDescripcion();
+            parametros.put("TIPO_DOCU_TRANSPORTE", tipoNroTrasporte.toUpperCase());
+            String nroDocuNombreTrans = txtNroTransporte.getText()+"-"+txtNombreTransporte.getText();
+            parametros.put("NRO_DOCU_NOM_TRANSPORTE", nroDocuNombreTrans.toUpperCase());
+            parametros.put("NRO_PLACA", txtPlacaVeiculo.getText());
+            
+            Collection<DetalleGuia> detalleGuias = this.listaDetalleGuia();
+            
+            reporte.llamarGuia("GuiaRemsion", parametros, detalleGuias  );
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void txtDirecCiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDirecCiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDirecCiaActionPerformed
+    
+    private List<DetalleGuia> listaDetalleGuia() {
+      List<DetalleGuia> detalleGuias = new ArrayList<>();
+      //Collection<DetalleGuia> detalleGuias = new ArrayList<DetalleGuia>();
+      for (int i = 0; i < jtDetaGuia.getRowCount(); i++) {
+            String item = dtm.getValueAt(i, 0).toString();
+            //Long item = Long.valueOf( dtm.getValueAt(i, 1).toString() );
+            String codigo = dtm.getValueAt(i, 1).toString();
+            String cantidad = dtm.getValueAt(i, 2).toString();
+            String um = dtm.getValueAt(i, 3).toString();
+            String descripcion = dtm.getValueAt(i, 4).toString();
+            
+            detalleGuias.add( new DetalleGuia(item,codigo,cantidad,um,descripcion) );
+            
+      }
+      return detalleGuias;
+    }
     
     private void guardarGuia(){
         int resp = JOptionPane.showConfirmDialog(null, "¿Está seguro de Guardar?", "Confirmación", JOptionPane.YES_NO_OPTION);
@@ -1472,6 +1584,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JCheckBox chBoxEditarPuntoLLegada;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
